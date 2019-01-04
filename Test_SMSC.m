@@ -1,4 +1,4 @@
-% 测试 AWP
+
 function y = Test_SMSC(X,label)
 % Input：X：data matrix
 %      label：ground truth
@@ -10,14 +10,11 @@ Fs = cell(v, 1);
 Ss = cell(v, 1); 
 n = length(label); 
 %==========================
-
-% 将样本归一化
 for i = 1 :v
     for  j = 1:n
          X{i}(j,:) = ( X{i}(j,:) - mean( X{i}(j,:) ) ) / std( X{i}(j,:) ) ;
     end
 end
-% 得到最初的特征矩阵
 for idx = 1:v
    A0 = constructW_PKN(X{idx}',10);
    A0 = A0-diag(diag(A0));
@@ -28,6 +25,5 @@ for idx = 1:v
    Ss{idx} = St;
    Fs{idx} = Ft;
 end
-% 测试算法
 opts.k = k;
 [y, obj] = SMSC(Ss,Fs,opts);

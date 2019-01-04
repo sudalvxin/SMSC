@@ -1,7 +1,4 @@
 function [y_idx, Tobj] = SMSC(Ss,Fs,opts)
-% solve:
-% min_{R_i, Y} \sum_t || St - YR_t ||_F
-% s.t. R_t^T R_t = I, Y>0;
 
 k = opts.k; % clusters
 
